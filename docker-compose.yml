@@ -1,0 +1,26 @@
+version: '3.2'
+services:
+  mongo:
+    image: mongo:3.4
+    ports:
+     - 27017:27017
+  eureka:
+    build:
+        context: ./eureka
+    environment:
+     - SPRING_PROFILES_ACTIVE=docker
+    ports:
+     - 8761:8761
+    hostname: eureka
+  microservice1:
+    build:
+        context: ./microservice1
+    environment:
+     - SPRING_PROFILES_ACTIVE=docker
+    ports:
+     - 8080:8080
+    depends_on: 
+      - eureka
+    hostname: microservice1
+    deploy:
+      replicas: 2
