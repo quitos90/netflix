@@ -1,16 +1,12 @@
-package com.netflix.usersdb.model;
-
+package com.netflix.common.model;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.data.annotation.Id;
 
 @Getter
 @Setter
 @ToString
-public class Users {
-    @Id
-    private String id;
+public class User {
     String name;
     String email;
     String address;
